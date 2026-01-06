@@ -3,10 +3,85 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Contact Us | EcoMart</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;1,400&family=Plus+Jakarta+Sans:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    
+
+    <header class="main-header">
+        <div class="header-container">
+            <div class="brand">
+                <h1 class="logo-text">EcoMart<span class="dot">.</span></h1>
+            </div>
+            <nav class="navigation">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="shop.html">Shop</a></li>
+                    <li><a href="blog.html">Journal</a></li>
+                    <li><a href="contact.html" class="active">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="contact-wrapper fade-up">
+        <section class="contact-container">
+            <div class="contact-info">
+                <span class="sub-heading">GET IN TOUCH</span>
+                <h2>We’d love to hear <span class="italic-serif">from you.</span></h2>
+                <p>Whether you have a question about our sourcing, our products, or just want to say hello, our door is always open.</p>
+                
+                <div class="info-details">
+                    <div class="info-item">
+                        <h4>EMAIL US</h4>
+                        <p>hello@ecomart.com</p>
+                    </div>
+                    <div class="info-item">
+                        <h4>VISIT THE STUDIO</h4>
+                        <p>123 Green Lane, Forest Hills<br>Sustainable City, SC 4567</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="contact-form-box">
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" name="name" placeholder="John Doe" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" placeholder="john@example.com" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="subject">Inquiry Type</label>
+                        <select id="subject" name="subject">
+                            <option value="general">General Inquiry</option>
+                            <option value="orders">Order Support</option>
+                            <option value="press">Press & Media</option>
+                            <option value="partnership">Partnerships</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Your Message</label>
+                        <textarea id="message" name="message" rows="5" placeholder="Tell us how we can help..." required></textarea>
+                    </div>
+
+                    <button type="submit" class="submit-btn">SEND MESSAGE</button>
+                </form>
+                <div id="formSuccess" class="success-msg">Message sent beautifully. We'll be in touch soon.</div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="copyright">&copy; 2026 EcoMart. Better for the Earth.</div>
+    </footer>
+
+    <script src="script.js"></script>
 </body>
 </html>
