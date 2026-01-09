@@ -1,0 +1,75 @@
+/* --- 1. VARIABLES & RESET (Required for colors and fonts) --- */
+:root {
+    --forest: #2f4739;
+    --sand: #FBF9F5; 
+    --gold: #A68A64;
+    --text-dark: #1a1a1a;
+    --white: #ffffff;
+    --transition: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+body {
+    margin: 0;
+    background-color: var(--sand);
+    color: var(--text-dark);
+    font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+/* --- 2. CONTACT FORM STYLES --- */
+.contact-container {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 80px;
+    max-width: 1200px;
+    margin: 80px auto;
+    background: var(--white);
+    padding: 60px;
+}
+
+.form-group { 
+    margin-bottom: 25px; 
+}
+
+.form-group label {
+    display: block;
+    font-size: 11px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: var(--forest);
+    letter-spacing: 1px;
+}
+
+.form-group input, 
+.form-group textarea {
+    width: 100%;
+    padding: 15px;
+    border: 1px solid #E2DED0;
+    background-color: #FBFBFB;
+    border-radius: 0;
+    box-sizing: border-box; /* Ensures padding doesn't break width */
+}
+
+.submit-btn {
+    width: 100%;
+    padding: 18px;
+    background-color: var(--forest);
+    color: var(--white);
+    border: none;
+    letter-spacing: 2px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.submit-btn:hover {
+    background-color: var(--gold);
+}
+
+/* --- 3. RESPONSIVE LOGIC (Makes the form work on mobile) --- */
+@media (max-width: 992px) {
+    .contact-container { 
+        grid-template-columns: 1fr; 
+        padding: 40px 20px;
+        margin: 40px auto;
+    }
+}
