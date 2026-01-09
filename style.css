@@ -1,276 +1,600 @@
-body {
-    margin: 0; /*removes default margin*/
-    background-color: white;
+/* ==========================================
+   1. GLOBAL ROOT & RESET
+   ========================================== */
+:root {
+    --forest: #2f4739;
+    --sand: #FBF9F5; 
+    --gold: #A68A64;
+    --text-dark: #1a1a1a;
+    --text-light: #555555;
+    --white: #ffffff;
+    --transition: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/*The header of the landing page*/
+html {
+    scroll-behavior: smooth;
+}
 
-.hero-header {
-    padding: 0px 50px; /*top and bottom, left and right*/
-    display: flex;  /*for horizontal alignment of direct children tags*/
-    justify-content: space-between; /*pushes first and last direct children tags to opposite ends*/
-    font-family: Arial, Helvetica, sans-serif;
-    align-items: center;    /*center aligns vertically*/
-    background-color: #2f4739;
+body {
+    margin: 0;
+    background-color: var(--sand);
+    color: var(--text-dark);
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+}
+
+/* ==========================================
+   2. REFINED HEADER & NAVIGATION
+   ========================================== */
+.top-announcement {
+    background-color: #263a2e;
+    color: var(--white);
+    text-align: center;
+    padding: 10px;
+    font-size: 11px;
+    letter-spacing: 2px;
+    font-weight: 600;
+}
+
+.main-header {
+    background-color: var(--forest);
+    padding: 15px 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+}
+
+.header-container {
+    max-width: 1300px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 40px;
+}
+
+.logo-text {
+    font-family: 'Playfair Display', serif;
+    color: var(--white);
+    font-size: 28px;
+    margin: 0;
+    text-decoration: none;
+}
+
+.dot { color: var(--gold); }
+
+.navigation ul {
+    display: flex;
+    list-style: none;
+    gap: 35px;
+    align-items: center;
     margin: 0;
 }
 
-.brand{
+.navigation a {
+    text-decoration: none;
+    color: rgba(255,255,255,0.7);
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    font-weight: 600;
+    transition: 0.3s var(--transition);
+}
+
+.navigation a:hover, .navigation a.active {
+    color: var(--white);
+}
+
+/* ==========================================
+   3. SHARED UI ELEMENTS (Animations & Typography)
+   ========================================== */
+.fade-up {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s var(--transition), transform 0.8s var(--transition);
+}
+
+.fade-up.active-animation {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.italic-serif {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-weight: 400;
+}
+
+.sub-heading {
+    display: block;
+    font-size: 12px;
+    letter-spacing: 4px;
+    color: var(--gold);
+    margin-bottom: 20px;
+    font-weight: 700;
+}
+
+.hero-divider {
+    width: 60px;
+    height: 2px;
+    background: var(--forest);
+    margin: 30px auto;
+}
+
+/* ==========================================
+   4. EDITORIAL BLOG / JOURNAL STYLES
+   ========================================== */
+.editorial-hero {
+    padding: 120px 20px;
+    text-align: center;
+}
+
+.editorial-hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 72px;
+    margin: 0;
+    line-height: 1;
+}
+
+.journal-feed {
+    max-width: 1300px;
+    margin: 0 auto 100px;
+    padding: 0 40px;
+}
+
+.blog-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
+}
+
+.blog-card.featured { grid-column: span 2; }
+
+.image-zoom-container {
+    overflow: hidden;
+    background-color: #eee;
+}
+
+.blog-card img {
+    width: 100%;
+    height: 450px;
+    object-fit: cover;
+    display: block;
+    transition: transform 1.5s var(--transition);
+}
+
+.blog-card:hover img { transform: scale(1.05); }
+
+.card-content { padding: 30px 0; }
+
+.card-content h2 { font-family: 'Playfair Display', serif; font-size: 36px; margin: 15px 0; }
+
+/* ==========================================
+   5. PREMIUM ABOUT & STORY STYLES
+   ========================================== */
+.story-overlap {
+    max-width: 1300px;
+    margin: 120px auto;
+    padding: 0 40px;
     display: flex;
     align-items: center;
-    gap: 10px;
 }
 
-.navigation ul { 
-    display: flex;
-    gap: 60px;
-    list-style: none;
-    font-size: 20px;
-}
+.story-image-box { width: 60%; position: relative; }
 
-.navigation a {
-    text-decoration: none;  /*to remove default underline from links*/
-    color: #2E7D32;
-    font-size: 20px;
-    font-weight: bolder;
-}
-
-.navigation a:hover,
-.navigation a.active {
-    color: #145016;     /*color changes while hovering or while active*/
-    border-bottom: 2px solid #145016;   /*border appears at bottom while hovering or while active*/
-}
-
-/*The content of the landing page*/   
-/* here */
-.hero-body {
-    height: 70vh;
-    background-image: url("assets/ecological-bag-with-cutlery.jpg");
-    background-size: cover; 
-    background-position: left center; 
-    display: flex;
-    justify-content: flex-end;  
-    align-items: center;       
-    padding-right: 80px;        
-}
-
-.hero-text {
-    max-width: 500px;
-    text-align: left;                 
-    font-family:'Times New Roman', Times, serif;
-    }
-
-.hero-text h2 {
-    font-size: 40px;
-    margin-bottom: 30px;
-    font-weight: bold;
-    color: #1f2933;
-}
-
-.hero-text p {
-    font-size: 25px;
-    margin-bottom: 50px;
-    color: #374151
-}
-
-.hero-btn {
-    padding: 20px 30px;
-    background-color: #2E7D32;
-    color: #ffffff;
-    text-decoration: none;
-    font-weight: 600;
-    border-radius: 3px;
-    font-size: 18px;
-    font-family:'Times New Roman', Times, serif;
-    margin-right: 30px;
-}
-.hero-btn:hover {
-    background-color: #66BB6A;
-}
-
-
-.featured-products {
-    padding: 80px 60px;
-    
-    text-align: center;
-}
-.featured-products h2 {
-    font-size: 42px;
-    text-align: center;
-    margin-bottom: 60px;
-    color: #ffffff;                  
-    background-color: #2E7D32;       
-    display: inline-block;           
-    padding: 10px 25px;             
-    border-radius: 8px;            
-    font-weight: bold;
-}
-.section-title {
-    text-align: center;
-    font-size: 40px;
-    margin-bottom: 60px;
-}
-
-
-.products-list {
-    display: flex;
-    justify-content: center;
-    gap: 40px;
-    flex-wrap: wrap;
-}
-
-
-.product-card {
-    width: 260px;
-    background-color: #deedc9fd;
-    padding: 20px;
-    border-radius: 8px;
-    text-align: center;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.12);
-}
-
-.product-card {
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.product-card:hover {
-    transform: translateY(-8px); 
-    box-shadow: 0 30px 40px rgba(0,0,0,0.2);
-}
-
-
-
-.product-card img {
+.story-image-box img {
     width: 100%;
-    height: 220px;
+    height: 600px;
     object-fit: cover;
-    border-radius: 8px;
-    border: 1px solid #E0E0E0;
+    box-shadow: 20px 20px 0px #E9E5D9;
 }
 
-
-.product-card h3 {
-    margin: 15px 0 10px;
-    font-size: 22px;
-    font-weight: bold;
+.story-content-box {
+    width: 50%;
+    background: var(--white);
+    padding: 80px;
+    margin-left: -10%;
+    z-index: 2;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.05);
 }
 
-.price {
-    font-weight: bold;
-    margin-bottom: 15px;
-}
-
-
-.btn {
-    display: inline-block;
-    padding: 10px 20px;
-    background-color: #2E7D32;
-    color: white;
-    text-decoration: none;
+.vision-card {
+    background-color: var(--forest);
+    color: var(--white);
+    padding: 100px 60px;
+    text-align: center;
+    max-width: 1200px;
+    margin: 80px auto;
     border-radius: 4px;
 }
 
-.btn:hover {
-    background-color: #66BB6A;
+.vision-card h2 { font-family: 'Playfair Display', serif; font-size: 52px; margin: 25px 0; }
+
+.outline-btn {
+    display: inline-block;
+    padding: 18px 40px;
+    border: 1.5px solid var(--white);
+    color: var(--white);
+    text-decoration: none;
+    font-size: 12px;
+    letter-spacing: 2px;
+    font-weight: 700;
+    transition: 0.4s;
 }
 
+.outline-btn:hover { background: var(--white); color: var(--forest); }
 
-.blog-research-preview {
-  padding: 80px 20px;
-  text-align: center;
-}
-
-.links {
-  display: flex;
-  justify-content: center;
-  gap: 60px;  
-  flex-wrap: wrap;
-}
-
-.link-card {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 20px;
+/* ==========================================
+   6. CONTACT FORM STYLES
+   ========================================== */
+.contact-container {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 80px;
+    max-width: 1200px;
+    margin: 80px auto;
+    background: var(--white);
+    padding: 60px;
 }
 
-.preview-img {
-  width: 150px;
-  height: 150px;
-  object-fit: cover;
-  border-radius: 10px;
+.form-group { margin-bottom: 25px; }
+
+.form-group label {
+    display: block;
+    font-size: 11px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: var(--forest);
+    letter-spacing: 1px;
 }
 
-.blog-research-preview .btn {
-  background-color: #2E7D32;
-  color: #fff;
-  padding: 12px 25px;
-  border-radius: 5px;
-  text-decoration: none;
-  font-weight: 600;
-  transition: background-color 0.3s ease;
+.form-group input, .form-group textarea {
+    width: 100%;
+    padding: 15px;
+    border: 1px solid #E2DED0;
+    background-color: #FBFBFB;
+    border-radius: 0;
 }
 
-.blog-research-preview .btn:hover {
-  background-color: #66BB6A;
+.submit-btn {
+    width: 100%;
+    padding: 18px;
+    background-color: var(--forest);
+    color: var(--white);
+    border: none;
+    letter-spacing: 2px;
+    font-weight: 700;
+    cursor: pointer;
 }
 
-.why-choose-us{
-  padding: 80px 20px;
-  text-align: center;
-}
-.reasons{
-  display: flex;
-  justify-content: center;
-  gap: 60px;
-  flex-wrap: wrap;
-}
-.reasons-card{
-  width: 300px;
-  background-color: #deedc9fd;
-  padding: 20px;
-  border-radius: 8px;
-  text-align: center;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.12);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.reasons-emoji{
-    height: 70px;
-    width:70px;
-    font-size: 40px;
-    padding: 10px;
-    border-radius: 50%;
-    background-color: #2E7D32;
-}
-.reasons-card:hover{
-  transform: translateY(-8px); 
-  box-shadow: 0 30px 40px rgba(0,0,0,0.2);
-}
-
-
+/* ==========================================
+   7. FOOTER
+   ========================================== */
 .site-footer {
-  background-color: #2E7D32; 
-  color: #fff;
-  padding: 30px 10px;
-  text-align: center;
-  font-family: Arial, Helvetica, sans-serif;
+    background-color: var(--forest);
+    color: var(--white);
+    padding: 60px 40px;
+    text-align: center;
 }
 
-.footer-about h3 {
-  margin-bottom: 15px;
-  font-size: 24px;
+.copyright { font-size: 12px; opacity: 0.5; letter-spacing: 1px; }
+
+/* ==========================================
+   8. RESPONSIVE LOGIC
+   ========================================== */
+@media (max-width: 992px) {
+    .header-container { padding: 0 20px; }
+    .blog-grid, .story-overlap, .contact-container { grid-template-columns: 1fr; }
+    .story-content-box { width: 100%; margin: -40px 0 0 0; padding: 40px; }
+    .editorial-hero h1 { font-size: 48px; }
 }
 
-.footer-about p {
-  margin: 5px 0;
-  font-size: 16px;
-  line-height: 1.5;
+/* --- Editorial Home Hero --- */
+.editorial-home-hero {
+    display: flex;
+    align-items: center;
+    min-height: 90vh;
+    background-color: var(--sand);
 }
 
-.footer-bottom {
-  margin-top: 20px;
-  font-size: 14px;
-  border-top: 1px solid #66BB6A; 
-  padding-top: 10px;
+.hero-image-side {
+    width: 55%;
+    height: 90vh;
+}
+
+.hero-image-side img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.hero-text-side {
+    width: 45%;
+    padding: 100px;
+}
+
+.hero-text-side h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 72px;
+    line-height: 1.1;
+    margin: 20px 0;
+    color: var(--forest);
+}
+
+.hero-text-side p {
+    font-size: 18px;
+    line-height: 1.8;
+    color: var(--text-light);
+    margin-bottom: 40px;
+}
+
+.outline-btn-dark {
+    display: inline-block;
+    padding: 18px 40px;
+    border: 1px solid var(--forest);
+    color: var(--forest);
+    text-decoration: none;
+    font-size: 12px;
+    letter-spacing: 2px;
+    font-weight: 700;
+    transition: 0.3s;
+}
+
+.outline-btn-dark:hover {
+    background: var(--forest);
+    color: white;
+}
+
+/* --- Collection Grid --- */
+.collection-section {
+    padding: 120px 40px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.collection-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: 300px;
+    gap: 20px;
+}
+
+.collection-item {
+    position: relative;
+    overflow: hidden;
+    grid-column: span 1;
+}
+
+.collection-item.large {
+    grid-column: span 2;
+    grid-row: span 2;
+}
+
+.collection-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 1.2s var(--transition);
+}
+
+.collection-label {
+    position: absolute;
+    bottom: 30px;
+    left: 30px;
+    color: white;
+}
+
+.collection-label h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 24px;
+    margin-bottom: 5px;
+}
+
+.collection-label a {
+    color: white;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* --- Values Banner --- */
+.values-banner {
+    background-color: var(--forest);
+    color: white;
+    display: flex;
+    justify-content: space-around;
+    padding: 100px 40px;
+    text-align: center;
+}
+
+.value-icon {
+    display: block;
+    font-family: 'Playfair Display', serif;
+    font-size: 40px;
+    color: var(--gold);
+    margin-bottom: 15px;
+    opacity: 0.6;
+}
+
+/* --- Home Journal Preview --- */
+.home-journal {
+    padding: 120px 40px;
+    background-color: var(--white);
+}
+
+.journal-preview-card {
+    display: flex;
+    max-width: 1200px;
+    margin: 0 auto;
+    align-items: center;
+    background-color: var(--sand);
+}
+
+.journal-text {
+    padding: 80px;
+    width: 50%;
+}
+
+.journal-img {
+    width: 50%;
+}
+
+.journal-img img {
+    width: 100%;
+    height: 500px;
+    object-fit: cover;
+    display: block;
+}
+
+@media (max-width: 992px) {
+    .editorial-home-hero { flex-direction: column; }
+    .hero-image-side, .hero-text-side { width: 100%; }
+    .hero-text-side { padding: 40px; }
+    .collection-grid { grid-template-columns: 1fr; grid-auto-rows: 400px; }
+    .collection-item.large { grid-column: span 1; grid-row: span 1; }
+    .journal-preview-card { flex-direction: column; }
+    .journal-text, .journal-img { width: 100%; padding: 40px; }
+}
+
+/* --- Product Section --- */
+.product-showcase {
+    padding: 100px 40px;
+    max-width: 1300px;
+    margin: 0 auto;
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 50px;
+}
+
+/* Product Grid Logic */
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+}
+
+.product-card {
+    transition: transform 0.3s var(--transition);
+}
+
+.product-img-box {
+    position: relative;
+    overflow: hidden;
+    background-color: #f2f2f2;
+}
+
+.product-img-box img {
+    width: 100%;
+    height: 380px;
+    object-fit: cover;
+    display: block;
+    transition: transform 1.2s var(--transition);
+}
+
+.product-card:hover .product-img-box img {
+    transform: scale(1.08);
+}
+
+.product-tag {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    background: var(--white);
+    color: var(--forest);
+    font-size: 10px;
+    padding: 5px 10px;
+    letter-spacing: 1px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+/* Quick Add Button - Appears on Hover */
+.quick-add {
+    position: absolute;
+    bottom: -50px;
+    left: 0;
+    width: 100%;
+    padding: 15px;
+    background: var(--forest);
+    color: white;
+    border: none;
+    font-size: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.4s var(--transition);
+}
+
+.product-card:hover .quick-add {
+    bottom: 0;
+}
+
+.product-info {
+    padding: 20px 0;
+}
+
+.product-info h3 {
+    font-size: 15px;
+    font-weight: 600;
+    margin: 0 0 8px;
+    color: var(--text-dark);
+}
+
+.product-price {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    color: var(--forest);
+    margin-bottom: 12px;
+}
+
+.eco-badges span {
+    font-size: 10px;
+    color: var(--text-light);
+    border: 1px solid #ddd;
+    padding: 3px 8px;
+    margin-right: 5px;
+}
+
+/* Brand Ethos Section */
+.brand-ethos {
+    background-color: var(--forest);
+    color: white;
+    padding: 120px 40px;
+}
+
+.ethos-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.ethos-text { width: 60%; }
+.ethos-text h2 { font-family: 'Playfair Display', serif; font-size: 48px; margin-top: 20px; }
+
+.ethos-stats {
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.stat-block h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 42px;
+    color: var(--gold);
+    margin: 0;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .product-grid { grid-template-columns: repeat(2, 1fr); }
+    .ethos-container { flex-direction: column; text-align: center; gap: 60px; }
+    .ethos-text { width: 100%; }
 }
